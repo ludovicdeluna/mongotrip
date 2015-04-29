@@ -1,0 +1,15 @@
+Project.delete_all
+User.delete_all
+Kitty.delete_all
+
+User.create name: 'Ludovic', birthday: Date.today
+Project.create title: 'My project', desc: 'This is my first project'
+user, project = User.first, Project.first
+
+Kitty.create name: 'My kitty', project_id: project.id, spot: [{ user_id: user.id, name: user.name} ]
+
+user.update_attributes name: 'Thomas'
+Kitty.where("spot.user_id" => user.id).update_all('$set' => {'spot.$.name' => user.name})
+
+Voir aussi la capacité à avoir une base d'écriture qui est flushé/cleané vers la base de lecture
+à intervalle régulière.

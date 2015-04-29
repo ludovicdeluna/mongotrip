@@ -1,0 +1,9 @@
+#mongotrip
+
+Use "fire and forget" mode in mongodb for fast updates with a profile based on
+two bases : One for read and one for write (with sync and clean with read
+database).
+
+Objectives is also to have possibility to use partial embedded document with
+update on changes (using the observer design pattern). This strategy is
+today not part of mongoid driver.

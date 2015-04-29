@@ -1,0 +1,24 @@
+# Mongoid.load!("config/mongoid.yml", :development)
+development:
+  sessions:
+    default:
+      database: mongotrip_development
+      hosts:
+        - localhost:27017
+      options:
+        write:
+          w: 0 # Don't verify writes and raise network errors
+
+test:
+  sessions:
+    default:
+      database: mongotrip_test
+      hosts:
+        - localhost:27017
+      options:
+        read: primary
+        # In the test environment we lower the retries and retry interval to
+        # low amounts for fast failures.
+        max_retries: 1
+        retry_interval: 0
+
